@@ -1,0 +1,4 @@
+- [x] Organizar logo e mockups, pareando fotos de costas.
+- [x] Criar catálogo e configurações persistentes com edição protegida.
+- [ ] Montar vitrine, carrinho e editor visual.
+- [ ] Verificar navegação, edição e promoções no navegador.
