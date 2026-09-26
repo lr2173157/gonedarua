@@ -86,8 +86,8 @@ function Index() {
     void refresh();
     supabase.auth.getUser().then(async ({ data }) => {
       if (data.user) {
-        const { data: role } = await supabase.rpc('is_store_admin', { _user_id: data.user.id });
-        setAdmin(Boolean(role));
+        const { data: role } = await supabase.from('user_roles').select('role').eq('user_id', data.user.id).maybeSingle();
+        setAdmin(role?.role === 'admin');
       }
     });
   }, []);
@@ -103,7 +103,11 @@ function Index() {
   // Each complete pair is capped at the promotional price; leftover singles keep their individual prices.
   const units = cart.flatMap(item => Array.from({ length: item.quantity }, () => item.product.price)).sort((a,b) => b-a);
   let subtotal = 0;
-  for (let i = 0; i < units.length; i += 2) subtotal += i + 1 < units.length ? Math.min(units[i] + units[i+1], Number(store.promo_price)) : units[i];
+  for (let i = 0; i < units.length; i += 2) {
+    const first = units[i] ?? 0;
+    const second = units[i + 1];
+    subtotal += second === undefined ? first : Math.min(first + second, Number(store.promo_price));
+  }
   const discount = couponApplied ? Math.min(Number(store.coupon_discount), subtotal) : 0;
   const total = Math.max(0, subtotal - discount);
   const addToCart = (product: Product, chosenSize: string) => {
