@@ -123,10 +123,12 @@ function Index() {
     else { setCouponApplied(false); setCouponError('Cupom inválido.'); }
   };
   const checkout = () => {
-    if (!store.whatsapp_number.replace(/\D/g, '')) return;
+    const digits = store.whatsapp_number.replace(/\D/g, '');
+    if (!digits) return;
+    const full = digits.length >= 10 && digits.length <= 11 && !digits.startsWith('55') ? `55${digits}` : digits;
     const lines = cart.map(i => `• ${i.product.name} / ${i.size} — ${i.quantity}x ${money(Number(i.product.price))}`).join('\n');
     const message = `Olá! Quero fazer um pedido na ${store.brand_name}:\n\n${lines}\n\nSubtotal: ${money(rawTotal)}\nPromoção: -${money(rawTotal - subtotal)}${couponApplied ? `\nCupom ${store.coupon_code}: -${money(discount)}` : ''}\nTotal: ${money(total)}`;
-    window.open(`https://wa.me/${store.whatsapp_number.replace(/\D/g, '')}?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
+    window.open(`https://wa.me/${full}?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
   };
   async function authSubmit(event: React.FormEvent) {
     event.preventDefault(); setSaving(true); setAdminMessage('');
