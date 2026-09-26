@@ -134,7 +134,6 @@ export type Database = {
     }
     Functions: {
       claim_store_admin: { Args: never; Returns: boolean }
-      is_store_admin: { Args: { _user_id: string }; Returns: boolean }
     }
     Enums: {
       app_role: "admin" | "user"

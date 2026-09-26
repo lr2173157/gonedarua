@@ -1,0 +1,15 @@
+CREATE SCHEMA IF NOT EXISTS app_private;
+REVOKE ALL ON SCHEMA app_private FROM PUBLIC;
+GRANT USAGE ON SCHEMA app_private TO authenticated;
+ALTER FUNCTION public.is_store_admin(uuid) SET SCHEMA app_private;
+ALTER FUNCTION public.claim_store_admin() SET SCHEMA app_private;
+REVOKE ALL ON FUNCTION app_private.is_store_admin(uuid) FROM PUBLIC, anon;
+REVOKE ALL ON FUNCTION app_private.claim_store_admin() FROM PUBLIC, anon;
+GRANT EXECUTE ON FUNCTION app_private.is_store_admin(uuid) TO authenticated;
+GRANT EXECUTE ON FUNCTION app_private.claim_store_admin() TO authenticated;
+CREATE FUNCTION public.is_store_admin(uuid) RETURNS boolean LANGUAGE sql STABLE SECURITY INVOKER SET search_path = public AS $$ SELECT app_private.is_store_admin($1) $$;
+CREATE FUNCTION public.claim_store_admin() RETURNS boolean LANGUAGE sql VOLATILE SECURITY INVOKER SET search_path = public AS $$ SELECT app_private.claim_store_admin() $$;
+REVOKE ALL ON FUNCTION public.is_store_admin(uuid) FROM PUBLIC, anon;
+REVOKE ALL ON FUNCTION public.claim_store_admin() FROM PUBLIC, anon;
+GRANT EXECUTE ON FUNCTION public.is_store_admin(uuid) TO authenticated;
+GRANT EXECUTE ON FUNCTION public.claim_store_admin() TO authenticated;
