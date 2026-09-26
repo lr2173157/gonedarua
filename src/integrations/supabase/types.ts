@@ -64,13 +64,17 @@ export type Database = {
           brand_name: string
           coupon_code: string
           coupon_discount: number
+          grid_columns: number
           hero_image_url: string
+          hero_layout: string
           hero_subtitle: string
           hero_title: string
           id: number
           instagram_url: string
           logo_url: string
           promo_price: number
+          show_about: boolean
+          show_offer: boolean
           updated_at: string
           whatsapp_number: string
         }
@@ -81,13 +85,17 @@ export type Database = {
           brand_name?: string
           coupon_code?: string
           coupon_discount?: number
+          grid_columns?: number
           hero_image_url: string
+          hero_layout?: string
           hero_subtitle?: string
           hero_title?: string
           id?: number
           instagram_url?: string
           logo_url: string
           promo_price?: number
+          show_about?: boolean
+          show_offer?: boolean
           updated_at?: string
           whatsapp_number?: string
         }
@@ -98,13 +106,17 @@ export type Database = {
           brand_name?: string
           coupon_code?: string
           coupon_discount?: number
+          grid_columns?: number
           hero_image_url?: string
+          hero_layout?: string
           hero_subtitle?: string
           hero_title?: string
           id?: number
           instagram_url?: string
           logo_url?: string
           promo_price?: number
+          show_about?: boolean
+          show_offer?: boolean
           updated_at?: string
           whatsapp_number?: string
         }

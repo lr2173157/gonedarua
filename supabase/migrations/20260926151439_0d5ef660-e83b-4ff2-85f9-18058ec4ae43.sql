@@ -1,0 +1,1 @@
+ALTER TABLE public.store_settings ADD COLUMN hero_layout text NOT NULL DEFAULT 'right' CHECK (hero_layout IN ('left', 'right')), ADD COLUMN grid_columns integer NOT NULL DEFAULT 4 CHECK (grid_columns BETWEEN 2 AND 4), ADD COLUMN show_offer boolean NOT NULL DEFAULT true, ADD COLUMN show_about boolean NOT NULL DEFAULT true;
