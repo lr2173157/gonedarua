@@ -1,4 +1,6 @@
 - [x] Organizar logo e mockups, pareando fotos de costas.
 - [x] Criar catálogo e configurações persistentes com edição protegida.
 - [x] Montar vitrine, carrinho e editor visual.
-- [ ] Verificar navegação, edição e promoções no navegador.
+- [x] Verificar navegação, sacola, promoções e proteção da edição no navegador.
+- [ ] Confirmar salvamento da edição com conta administradora real (aguarda confirmação do e-mail da primeira conta).
+- [ ] Habilitar envio de pedidos pelo WhatsApp (aguarda número da loja).
