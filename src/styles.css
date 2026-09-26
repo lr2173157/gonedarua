@@ -158,11 +158,11 @@
   --secondary-foreground: var(--foreground);
   --muted: oklch(0.93 0.005 95);
   --muted-foreground: oklch(0.45 0.008 80);
-  --accent: oklch(0.89 0.21 119);
+  --accent: oklch(0.6 0.23 10);
   --accent-foreground: var(--foreground);
   --border: oklch(0.79 0.005 95);
   --input: var(--border);
-  --ring: oklch(0.6 0.14 119);
+  --ring: oklch(0.6 0.23 10);
 }
 @theme inline { --font-display: "Archivo Black", Impact, sans-serif; --font-body: "DM Sans", Arial, sans-serif; }
 html { scroll-behavior: smooth; }
