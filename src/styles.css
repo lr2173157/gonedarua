@@ -252,7 +252,7 @@ body { font-family: var(--font-body); }
 .about > div:last-child > p:last-child { max-width: 390px; margin-top: 28px; font-size: 17px; line-height: 1.6; }
 footer { background: var(--ink); color: var(--paper); padding: 70px 4% 20px; }
 .footer-top { display: flex; justify-content: space-between; align-items: center; padding-bottom: 65px; }
-.footer-top img { width: 130px; height: 115px; object-fit: contain; filter: invert(1); }
+.footer-top img { width: 130px; height: 115px; object-fit: contain; }
 .footer-top p { font-family: var(--font-display); font-size: clamp(55px, 9vw, 145px); line-height: .9; text-align: right; }
 .footer-bottom { border-top: 1px solid var(--muted-foreground); padding-top: 20px; display: flex; align-items: center; justify-content: space-between; gap: 15px; font-size: 10px; font-weight: 800; }
 .footer-bottom div { display: flex; align-items: center; gap: 20px; }
