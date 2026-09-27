@@ -14,6 +14,195 @@ export type Database = {
   }
   public: {
     Tables: {
+      product_colors: {
+        Row: {
+          active: boolean
+          hex: string
+          id: string
+          name: string
+          product_id: string
+          sort_order: number
+        }
+        Insert: {
+          active?: boolean
+          hex: string
+          id?: string
+          name: string
+          product_id: string
+          sort_order?: number
+        }
+        Update: {
+          active?: boolean
+          hex?: string
+          id?: string
+          name?: string
+          product_id?: string
+          sort_order?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "product_colors_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      product_customization_sizes: {
+        Row: {
+          customization_id: string
+          id: string
+          label: string
+          quantity: number
+          size_id: string
+        }
+        Insert: {
+          customization_id: string
+          id?: string
+          label: string
+          quantity: number
+          size_id: string
+        }
+        Update: {
+          customization_id?: string
+          id?: string
+          label?: string
+          quantity?: number
+          size_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "product_customization_sizes_customization_id_fkey"
+            columns: ["customization_id"]
+            isOneToOne: false
+            referencedRelation: "product_customizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      product_customizations: {
+        Row: {
+          back_area_cm2: number
+          back_artwork_url: string | null
+          back_height_cm: number
+          back_preview_url: string | null
+          back_width_cm: number
+          calculated_price: number
+          color_id: string
+          configuration: Json
+          created_at: string
+          front_area_cm2: number
+          front_artwork_url: string | null
+          front_height_cm: number
+          front_preview_url: string | null
+          front_width_cm: number
+          id: string
+          product_id: string
+          status: string
+          updated_at: string
+          user_id: string
+          whatsapp_attachment_status: string
+        }
+        Insert: {
+          back_area_cm2?: number
+          back_artwork_url?: string | null
+          back_height_cm?: number
+          back_preview_url?: string | null
+          back_width_cm?: number
+          calculated_price?: number
+          color_id: string
+          configuration: Json
+          created_at?: string
+          front_area_cm2?: number
+          front_artwork_url?: string | null
+          front_height_cm?: number
+          front_preview_url?: string | null
+          front_width_cm?: number
+          id?: string
+          product_id: string
+          status?: string
+          updated_at?: string
+          user_id: string
+          whatsapp_attachment_status?: string
+        }
+        Update: {
+          back_area_cm2?: number
+          back_artwork_url?: string | null
+          back_height_cm?: number
+          back_preview_url?: string | null
+          back_width_cm?: number
+          calculated_price?: number
+          color_id?: string
+          configuration?: Json
+          created_at?: string
+          front_area_cm2?: number
+          front_artwork_url?: string | null
+          front_height_cm?: number
+          front_preview_url?: string | null
+          front_width_cm?: number
+          id?: string
+          product_id?: string
+          status?: string
+          updated_at?: string
+          user_id?: string
+          whatsapp_attachment_status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "product_customizations_color_id_fkey"
+            columns: ["color_id"]
+            isOneToOne: false
+            referencedRelation: "product_colors"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "product_customizations_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      product_customizer_configs: {
+        Row: {
+          back_print_area: Json
+          enabled: boolean
+          front_print_area: Json
+          garment_height_cm: number
+          garment_width_cm: number
+          pricing: Json
+          product_id: string
+        }
+        Insert: {
+          back_print_area?: Json
+          enabled?: boolean
+          front_print_area?: Json
+          garment_height_cm?: number
+          garment_width_cm?: number
+          pricing?: Json
+          product_id: string
+        }
+        Update: {
+          back_print_area?: Json
+          enabled?: boolean
+          front_print_area?: Json
+          garment_height_cm?: number
+          garment_width_cm?: number
+          pricing?: Json
+          product_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "product_customizer_configs_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: true
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       products: {
         Row: {
           active: boolean
